@@ -133,6 +133,8 @@ jobs:
         run: swift test --package-path template-test
         env:
           DATABASE_HOST: ${{ matrix.dbhostname }}
+      - name: Test routes subcommand
+        run: swift run template-test routes
 
   # Run vapor new and build the container with Docker Compose for all combinations of options
   # Use normal "only one of this workflow per branch at a time, cancel stale jobs" concurrency

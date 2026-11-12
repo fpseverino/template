@@ -16,7 +16,6 @@ struct Routes: AsyncParsableCommand {
             let app = try appWithConfigReader
             try await configure(app)
             print(app.routesASCIITable())
-            try await app.shutdown()
         }
     }
 }

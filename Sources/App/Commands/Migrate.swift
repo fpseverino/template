@@ -17,7 +17,6 @@ struct Migrate: AsyncParsableCommand {
         try await withLogger(.init(label: "vapor.logger.migrate")) { _ in
             let app = try appWithConfigReader
             print("🚧 Work in progress 🚧")
-            try await app.shutdown()
         }
     }
 }
