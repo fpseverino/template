@@ -1,6 +1,4 @@
 import ArgumentParser
-import Configuration
-import ConsoleLogger
 import Logging
 import Vapor
 
@@ -17,14 +15,7 @@ struct Migrate: AsyncParsableCommand {
 
     mutating func run() async throws {
         try await withLogger(.init(label: "vapor.logger.migrate")) { _ in
-            // `@Flag`s from ArgumentParser are ignored,
-            // they are used only for the `--help` screen.
-            let config = ConfigReader(providers: [
-                CommandLineArgumentsProvider(),
-                EnvironmentVariablesProvider(),
-            ])
-            ConsoleLogger.bootstrapWithConfigReader(config: config)
-            let app = try Application(configReader: config)
+            let app = try appWithConfigReader
             print("🚧 Work in progress 🚧")
             try await app.shutdown()
         }

@@ -1,8 +1,4 @@
 import ArgumentParser
-import Configuration
-import ConsoleLogger
-import Logging
-import Vapor
 
 @main
 struct Entrypoint: AsyncParsableCommand {

@@ -1,6 +1,4 @@
 import ArgumentParser
-import Configuration
-import ConsoleLogger
 import Logging
 import Vapor
 
@@ -15,12 +13,7 @@ struct Routes: AsyncParsableCommand {
 
     mutating func run() async throws {
         try await withLogger(.init(label: "vapor.logger.routes")) { _ in
-            let config = ConfigReader(providers: [
-                CommandLineArgumentsProvider(),
-                EnvironmentVariablesProvider(),
-            ])
-            ConsoleLogger.bootstrapWithConfigReader(config: config)
-            let app = try Application(configReader: config)
+            let app = try appWithConfigReader
             try await configure(app)
             print(app.routesASCIITable())
             try await app.shutdown()
