@@ -19,6 +19,9 @@ struct Serve: AsyncParsableCommand {
     @Option(help: "The path for the Unix domain socket file the server will bind to.")
     var socketPath: String?
 
+    @Option(help: "The name of the environment to use.")
+    var vaporEnv: String?
+
     /// Captures all unrecognized command-line arguments
     /// for compatibility with other libraries that use Swift Configuration.
     /// You don't need to pass them to your `ConfigReader`, it will automatically pick them up.
