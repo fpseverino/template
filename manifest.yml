@@ -79,6 +79,7 @@ files:
               - Databases+Vapor.swift
           - folder: Commands
             files:
+              - appWithConfigReader.swift
               - Serve.swift
               - Routes.swift
               - file: Migrate.swift
